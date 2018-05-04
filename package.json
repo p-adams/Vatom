@@ -1,0 +1,19 @@
+{
+  "name": "vatom",
+  "version": "1.0.0",
+  "description": "Shared, independent state manager for Vue",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p-adams/Vatom.git"
+  },
+  "author": "Paul Adams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/p-adams/Vatom/issues"
+  },
+  "homepage": "https://github.com/p-adams/Vatom#readme"
+}
