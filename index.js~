@@ -1,3 +1,0 @@
-export.Vatom = function(){
-    console.log("Testing")
-}

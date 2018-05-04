@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/p-adams/Vatom/issues"
   },
-  "homepage": "https://github.com/p-adams/Vatom#readme"
+  "homepage": "https://github.com/p-adams/Vatom#readme",
+  "dependencies": {
+    "vue": "^2.5.16"
+  }
 }
