@@ -1,6 +1,6 @@
 {
   "name": "vatom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shared, independent state manager for Vue",
   "main": "index.js",
   "scripts": {
