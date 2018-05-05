@@ -1,28 +1,27 @@
 const Vue = require("vue");
 
-// Scalar or compound value -> Vue instance
+module.exports.isSupportedValueType = rv => typeof rv === "object";
 
-const createAtom = ({ value }) => {
+// Reference value of type Object or Array -> Vue instance
+const Atom = referenceValue => {
+  if (!isSupportedValueType(referenceValue)) {
+    console.warn(`${referenceValue} must be an Object or Array`);
+    return;
+  }
   return new Vue({
     data: {
-      value
+      rv: referenceValue
     },
     methods: {
       swap(currentValue, fn) {
         fn.apply(currentValue);
       },
-      reset(atom, newValue) {}
+      reset(rv, newValue) {}
     },
     computed: {
       deref() {
-        return atom => {};
+        return rv => {};
       }
     }
   });
-};
-
-console.log(createAtom({ value: { key: 1, value: "meow" } }).$data.value.key);
-
-exports = {
-  createAtom
 };

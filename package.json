@@ -4,7 +4,7 @@
   "description": "Shared, independent state manager for Vue",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,8 @@
   "homepage": "https://github.com/p-adams/Vatom#readme",
   "dependencies": {
     "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "jest": "^22.4.3"
   }
 }
