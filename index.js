@@ -1,26 +1,27 @@
 const Vue = require("vue");
 
-module.exports.isSupportedValueType = rv => typeof rv === "object";
+module.exports.isSupportedValueType = ro => typeof ro === "object";
 
-// Reference value of type Object or Array -> Vue instance
-const Atom = referenceValue => {
-  if (!isSupportedValueType(referenceValue)) {
-    console.warn(`${referenceValue} must be an Object or Array`);
+// Object | Array -> Vue instance
+const Atom = referenceObject => {
+  if (!isSupportedValueType(referenceObject)) {
+    console.warn(`${referenceObject} must be an Object or Array`);
     return;
   }
   return new Vue({
     data: {
-      rv: referenceValue
+      ro: referenceObject
     },
     methods: {
-      swap(currentValue, fn) {
-        fn.apply(currentValue);
+      // swap: Object, Function -> updated Object
+      swap(currentReferenceObject, fn) {
+        fn.apply(currentReferenceObject);
       },
-      reset(rv, newValue) {}
+      reset(currentReferenceObject, newValue) {}
     },
     computed: {
       deref() {
-        return rv => {};
+        return this.ro;
       }
     }
   });
