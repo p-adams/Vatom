@@ -8,25 +8,32 @@
 
 ## Usage
 
-    import Vatom from 'vatom'
+`import Vatom from 'vatom'`
 
-    // create a Vatom to store the state you want to share in your app
-    const todos = Vatom([{id: 1, text: "Learn Vue", completed: false}])
+#### Create a Vatom to store the state you want to share in your app:
 
-    // update the shared state by passing in a function (free of side-effects) to the `$swap` // method along with any optional arguments
-    const setCompletedToTrue = function(todos, id) {
-        return todos.map(
-            todo => (todo.id === id ? { ...todo, completed: true } : todo)
-        );
-    };
+`const todos = Vatom([{id: 1, text: "Learn Vue", completed: false}])`
 
-    todos.$swap(setCompletedToTrue, 0) // 0 is the id of the todo you want to set to complete
+#### Update the shared state by passing in a function (free of side-effects) to the `$swap`<br/>
 
-    // get a snapshot of your state by calling `$deref`
-    todos.$deref()
-    // set old state to entirely new state using `$reset`
-    todos.$reset(["Learn Vue", "Master Vuex"]) // todos is now an array of text strings
+#### method along with any optional arguments:
 
-##### Vatom is inspired by Clojure's Atom mechanism for managing state
+`const setCompletedToTrue = function(todos, id) { return todos.map( todo => (todo.id === id ? { ...todo, completed: true } : todo) ); };`
+
+`todos.$swap(setCompletedToTrue, 0)` 0 is the id of the todo you want to set to complete
+
+#### Get a snapshot of your state by calling `$deref`:
+
+`todos.$deref()`
+
+#### Set old state to entirely new state using `$reset`:
+
+`todos.$reset(["Learn Vue", "Master Vuex"])` todos is now an array of text strings
+
+###### Vatom is inspired by Clojure's Atom mechanism for managing state
 
 (https://clojure.org/reference/atoms)
+
+```
+
+```
