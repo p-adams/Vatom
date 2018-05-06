@@ -13,7 +13,7 @@
     // create a Vatom to store the state you want to share in your app
     const todos = Vatom([{id: 1, text: "Learn Vue", completed: false}])
 
-    // update the shared state by passing in a function (free of side-effects) to the `$swap` method along with any optional arguments
+    // update the shared state by passing in a function (free of side-effects) to the `$swap` // method along with any optional arguments
     const setCompletedToTrue = function(todos, id) {
         return todos.map(
             todo => (todo.id === id ? { ...todo, completed: true } : todo)
