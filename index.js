@@ -1,5 +1,4 @@
 const Vue = require("vue");
-// Todo: implement compare and set internally for swap method
 
 const AtomObject = {
   // Any type of value -> a Vue instance where that value is
@@ -21,7 +20,7 @@ const AtomObject = {
             updateFunction.apply(null, [this.value, args])
           );
         },
-        // reset: value -> value
+        // a new value
         reset(newValue) {
           this.value = newValue;
         }
