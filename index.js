@@ -9,7 +9,7 @@ const AtomObject = {
       },
       methods: {
         // Function
-        swap(updateFunction, args = 0) {
+        swap(updateFunction, args = {}) {
           this.value = this.$set(
             this,
             "value",
