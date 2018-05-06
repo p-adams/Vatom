@@ -32,3 +32,18 @@ test("Updating Atom's value by calling swap increments all values in array by 1"
   atom.$swap(inc);
   expect(atom.$deref()).toEqual(expect.arrayContaining([2, 3, 4]));
 });
+
+test("Updating Atom's value by calling swap on Todos sets todo to complete", () => {
+  const setCompletedToTrue = function(todos, id) {
+    return todos.map(
+      todo => (todo.id === id ? { ...todo, completed: true } : todo)
+    );
+  };
+  const todos = [
+    { id: 0, text: "Learn Vue", completed: false },
+    { id: 1, text: "Learn React", completed: true }
+  ];
+  const atom = Atom(todos);
+  atom.$swap(setCompletedToTrue, 0);
+  expect(atom.$deref()[0].completed).toBeTruthy();
+});

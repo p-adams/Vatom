@@ -9,11 +9,11 @@ const AtomObject = {
       },
       methods: {
         // Function
-        swap(updateFunction) {
+        swap(updateFunction, args = 0) {
           this.value = this.$set(
             this,
             "value",
-            updateFunction.apply(null, [this.value])
+            updateFunction.apply(null, [this.value, args])
           );
         },
         // reset: value -> value
