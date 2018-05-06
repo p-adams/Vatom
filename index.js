@@ -1,6 +1,6 @@
 const Vue = require("vue");
 
-module.exports.isSupportedValueType = ro => typeof ro === "object";
+module.exports.isSupportedValueType = ro => ro instanceof Object;
 
 // Object | Array -> Vue instance
 const Atom = referenceObject => {
@@ -13,11 +13,12 @@ const Atom = referenceObject => {
       ro: referenceObject
     },
     methods: {
-      // swap: Object, Function -> updated Object
-      swap(currentReferenceObject, fn) {
-        fn.apply(currentReferenceObject);
+      // swap: Function -> Object
+      swap(updateFunction) {
+        updateFunction.apply(this.ro);
       },
-      reset(currentReferenceObject, newValue) {}
+      // reset: Object -> Object
+      reset(newValue) {}
     },
     computed: {
       deref() {
