@@ -1,6 +1,6 @@
 const Vue = require("vue");
 
-const AtomObject = {
+const Vatom = {
   // Any type of value -> a Vue instance where that value is
   // a reactive data property
   init: value =>
@@ -34,9 +34,9 @@ const AtomObject = {
 };
 
 module.exports = function(value) {
-  const Atom = AtomObject.init(value);
-  Atom.$swap = Atom.$options.methods.swap;
-  Atom.$reset = Atom.$options.methods.reset;
-  Atom.$deref = Atom.$options.computed.deref;
-  return Atom;
+  const vatom = Vatom.init(value);
+  vatom.$swap = vatom.$options.methods.swap;
+  vatom.$reset = vatom.$options.methods.reset;
+  vatom.$deref = vatom.$options.computed.deref;
+  return vatom;
 };
