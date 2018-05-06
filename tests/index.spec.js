@@ -47,3 +47,10 @@ test("Updating Atom's value by calling swap on Todos sets todo to complete", () 
   atom.$swap(setCompletedToTrue, 0);
   expect(atom.$deref()[0].completed).toBeTruthy();
 });
+
+test("Calling reset on Atom should reset to new value", () => {
+  const users = [{ key: "4", username: "foo" }];
+  const atom = Atom(users);
+  atom.$reset({ count: 20 });
+  expect(atom.$deref()).toEqual(expect.objectContaining({ count: 20 }));
+});

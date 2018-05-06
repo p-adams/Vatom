@@ -1,14 +1,19 @@
 const Vue = require("vue");
+// Todo: implement compare and set internally for swap method
 
-// Value -> Vue instance
 const AtomObject = {
+  // Any type of value -> a Vue instance where that value is
+  // a reactive data property
   init: value =>
     new Vue({
       data: {
         value
       },
       methods: {
-        // Function
+        // Function & optional arguments
+        // Swaps value stored as data
+        // updateFunction should be free of side effects
+        // as it may be called multiple times
         swap(updateFunction, args = {}) {
           this.value = this.$set(
             this,
@@ -17,7 +22,9 @@ const AtomObject = {
           );
         },
         // reset: value -> value
-        reset(newValue) {}
+        reset(newValue) {
+          this.value = newValue;
+        }
       },
       computed: {
         deref() {
