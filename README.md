@@ -26,3 +26,7 @@
     todos.$deref()
     // set old state to entirely new state using `$reset`
     todos.$reset(["Learn Vue", "Master Vuex"]) // todos is now an array of text strings
+
+##### Vatom is inspired by Clojure's Atom mechanism for managing state
+
+(https://clojure.org/reference/atoms)
