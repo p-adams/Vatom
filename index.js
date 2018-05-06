@@ -1,23 +1,36 @@
 const Vue = require("vue");
 
 // Value -> Vue instance
-module.exports.Atom = value => {
-  return new Vue({
-    data: {
-      value
-    },
-    methods: {
-      // swap: Function -> value
-      swap(updateFunction, args) {
-        this.value = updateFunction.apply(null, args);
+const AtomObject = {
+  init: value =>
+    new Vue({
+      data: {
+        value
       },
-      // reset: value -> value
-      reset(newValue) {}
-    },
-    computed: {
-      deref() {
-        return this.value;
+      methods: {
+        // Function
+        swap(updateFunction) {
+          this.value = this.$set(
+            this,
+            "value",
+            updateFunction.apply(null, [this.value])
+          );
+        },
+        // reset: value -> value
+        reset(newValue) {}
+      },
+      computed: {
+        deref() {
+          return this.value;
+        }
       }
-    }
-  });
+    })
+};
+
+module.exports = function(value) {
+  const Atom = AtomObject.init(value);
+  Atom.$swap = Atom.$options.methods.swap;
+  Atom.$reset = Atom.$options.methods.reset;
+  Atom.$deref = Atom.$options.computed.deref;
+  return Atom;
 };
